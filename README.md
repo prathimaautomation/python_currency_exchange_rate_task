@@ -16,14 +16,34 @@ url = "https://spartaglobal.com"
 ```
 ### put the json file in the pycharm package dir structure
 ```python
-
+exchange_rates.js file has been added to app directory
 ```
-
 ### create a python file called exchange_rate_paser.py
-### create a class
-### create a funtion
-### using the attached json file with exchange rates available inside the file
-### READ data from the attached file (exchange_rates.json)
-### print the country currency code with matching exchange rate
+```python
+import json
+
+# create a class
+class Exchange_rate_parser:
+
+    # create a funtion
+    def currency_converter(currency_input):
+        f = open('exchange_rates.json')
+        data = json.load(f)
+        # iterating through the json list
+        for i in data['rates']:
+            if i == currency_input:
+                #print the country currency code with matching exchange rate
+                print(f"{currency_input} exchange rate is {data['rates'][i]}")
+                break
+
 ### HINT- import json and utilise available methods in json module
 ### expected outcome: GBP exchange rate is 0.89275
+```
+```python
+from app.exchange_rate_parser import Exchange_rate_parser
+
+currency_input = input("Please enter the currency to find exchange rate: ").upper()
+
+Exchange_rate_parser.currency_converter(currency_input)
+```
+
